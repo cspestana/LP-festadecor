@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festança da Jana · Decoração de Festas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rosa:#ec0750;
+    --amarelo:#ffc30f;
+    --azul:#00b3f9;
+    --roxo:#5a2aeb;
+    --verde:#04fb90;
+    --creme:#fbf7ff;
+    --texto:#2f2740;
+    --cinza:#7a6f8a;
+    --zap:#25d366;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',system-ui,sans-serif;
+    color:var(--texto);
+    background:linear-gradient(160deg,#f3ecff,#ffe9f2);
+    line-height:1.6;
+    padding:24px 20px;
+  }
+
+  /* ---------- MOLDURA CENTRAL ---------- */
+  .page{
+    max-width:1160px;margin:0 auto;
+    background:var(--creme);
+    border-radius:26px;
+    box-shadow:0 18px 55px rgba(90,42,235,.14);
+  }
+  @media(max-width:640px){
+    body{padding:0;}
+    .page{border-radius:0;}
+  }
+  h1,h2,h3{font-family:'Poppins',sans-serif;line-height:1.15;font-weight:700;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:center;
+    padding:16px 6vw;
+    background:rgba(251,247,255,.9);
+    backdrop-filter:blur(8px);
+    box-shadow:0 4px 20px rgba(122,79,255,.06);
+    border-radius:26px 26px 0 0;
+  }
+  @media(max-width:640px){header.nav{border-radius:0;}}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.4rem;color:var(--roxo);letter-spacing:-.5px;}
+  .logo .dot{font-size:1.5rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    text-align:center;
+    padding:90px 6vw 100px;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(255,90,150,.65), transparent 45%),
+      radial-gradient(circle at 82% 16%, rgba(255,180,40,.60), transparent 45%),
+      radial-gradient(circle at 15% 85%, rgba(140,60,255,.55), transparent 50%),
+      radial-gradient(circle at 85% 82%, rgba(40,180,255,.60), transparent 50%),
+      linear-gradient(120deg,#ff4f8b 0%,#ff8a3d 30%,#8a4fff 68%,#2ec5ff 100%);
+    color:#fff;
+  }
+  .hero .confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+  .hero .hero-inner{position:relative;z-index:2;}
+  .hero h1{font-size:clamp(2.2rem,5.5vw,3.7rem);font-weight:800;letter-spacing:-1px;color:#fff;text-shadow:0 3px 16px rgba(0,0,0,.22);}
+  .hero p.tag{font-family:'Quicksand',sans-serif;font-size:clamp(1.05rem,2.5vw,1.35rem);margin:16px auto 0;max-width:620px;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.18);}
+
+  /* ---------- SOBRE ---------- */
+  .sobre{max-width:820px;margin:0 auto;padding:70px 6vw 20px;text-align:center;}
+  .sobre h2{font-size:1.9rem;color:var(--roxo);margin-bottom:14px;}
+  .sobre h2::after{content:"";display:block;width:64px;height:5px;border-radius:99px;background:var(--amarelo);margin:12px auto 0;}
+  .sobre p{font-family:'Quicksand',sans-serif;font-size:1.08rem;font-weight:500;color:#4a4059;}
+
+  /* ---------- DIVISÓRIA ---------- */
+  .divisoria{display:flex;align-items:center;justify-content:center;gap:16px;max-width:720px;margin:40px auto 10px;padding:0 6vw;}
+  .divisoria .linha{flex:1;height:5px;border-radius:99px;
+    background:linear-gradient(90deg,var(--rosa),var(--amarelo),var(--verde),var(--azul),var(--roxo));}
+  .divisoria .linha.esq{background:linear-gradient(90deg,transparent,var(--rosa),var(--amarelo));}
+  .divisoria .linha.dir{background:linear-gradient(90deg,var(--verde),var(--azul),var(--roxo),transparent);}
+  .divisoria .bolinhas{display:flex;gap:6px;}
+  .divisoria .bolinhas i{width:11px;height:11px;border-radius:50%;display:block;}
+  .divisoria .bolinhas i:nth-child(1){background:var(--rosa);}
+  .divisoria .bolinhas i:nth-child(2){background:var(--amarelo);}
+  .divisoria .bolinhas i:nth-child(3){background:var(--azul);}
+
+  /* ---------- CATÁLOGO ---------- */
+  .catalogo{padding:20px 6vw 90px;max-width:1200px;margin:0 auto;}
+
+  /* filtro de categoria */
+  .filtro{max-width:420px;margin:0 auto 42px;position:relative;}
+  .filtro-label{display:block;text-align:center;font-family:'Quicksand',sans-serif;font-weight:700;color:var(--cinza);margin-bottom:12px;font-size:1.02rem;}
+  .filtro-btn{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:15px 22px;border:none;cursor:pointer;
+    background:#fff;color:var(--texto);font-family:'Poppins',sans-serif;font-weight:600;font-size:1.05rem;
+    border-radius:16px;box-shadow:0 8px 24px rgba(122,79,255,.14);
+    transition:box-shadow .18s, transform .12s;
+  }
+  .filtro-btn:hover{box-shadow:0 10px 30px rgba(255,93,143,.2);}
+  .filtro-btn .chev{transition:transform .2s;color:var(--roxo);font-size:.85rem;}
+  .filtro-btn.open .chev{transform:rotate(180deg);}
+  .filtro-lista{
+    position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;
+    background:#fff;border-radius:16px;overflow:hidden;
+    box-shadow:0 14px 40px rgba(47,39,64,.16);
+    max-height:0;opacity:0;pointer-events:none;transition:max-height .25s, opacity .2s;
+  }
+  .filtro-lista.open{max-height:340px;opacity:1;pointer-events:auto;}
+  .filtro-lista button{
+    width:100%;text-align:left;border:none;background:none;cursor:pointer;
+    padding:13px 22px;font-family:'Poppins',sans-serif;font-size:1rem;color:var(--texto);
+    display:flex;align-items:center;gap:10px;transition:background .15s;
+  }
+  .filtro-lista button:hover{background:#f4eeff;}
+  .filtro-lista button.active{background:#f4eeff;color:var(--roxo);font-weight:700;}
+  .filtro-lista button .emo{font-size:1.1rem;}
+
+  /* grid */
+  .grid{
+    display:grid;gap:26px;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  }
+  .card{
+    background:#fff;border-radius:20px;overflow:hidden;
+    box-shadow:0 10px 30px rgba(122,79,255,.10);
+    transition:transform .18s, box-shadow .18s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(255,93,143,.18);}
+  .card .frame{position:relative;aspect-ratio:4/3;background:#f2ecff;overflow:hidden;}
+  .card .frame img{width:100%;height:100%;object-fit:cover;display:block;}
+  .placeholder{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:14px;
+    background:repeating-linear-gradient(45deg,#f7f0ff,#f7f0ff 14px,#efe6ff 14px,#efe6ff 28px);
+    color:#9a86b5;
+  }
+  .placeholder .plus{font-size:2.2rem;line-height:1;margin-bottom:6px;color:var(--roxo);}
+  .placeholder small{font-size:.7rem;background:#fff;padding:3px 8px;border-radius:8px;
+    margin-top:8px;color:#7a6a85;font-family:monospace;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  .cat-chip{
+    position:absolute;top:12px;left:12px;z-index:3;
+    font-family:'Quicksand',sans-serif;font-size:.72rem;font-weight:700;
+    padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.92);color:var(--roxo);
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+  }
+  .card .info{padding:16px 18px 20px;text-align:center;display:flex;flex-direction:column;gap:14px;flex:1;}
+  .card .info h3{font-size:1.1rem;color:var(--texto);font-weight:600;}
+  .zap-btn{
+    margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:12px 18px;border-radius:12px;text-decoration:none;
+    background:var(--zap);color:#fff;font-weight:600;font-size:.95rem;
+    box-shadow:0 6px 16px rgba(37,211,102,.32);transition:transform .12s, box-shadow .12s;
+  }
+  .zap-btn:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(37,211,102,.4);}
+  .zap-btn svg{width:19px;height:19px;fill:#fff;}
+  .vazio{text-align:center;color:var(--cinza);padding:50px 0;font-family:'Quicksand',sans-serif;font-weight:600;}
+
+  /* ---- card TEMA PERSONALIZADO ---- */
+  .card.custom .frame{
+    background:linear-gradient(135deg,var(--roxo),var(--rosa) 58%,var(--amarelo));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card.custom .custom-inner{text-align:center;color:#fff;padding:18px;}
+  .card.custom .custom-inner .ico{font-size:2.7rem;line-height:1;}
+  .card.custom .custom-inner p{font-family:'Quicksand',sans-serif;font-weight:700;
+    margin-top:10px;font-size:.98rem;text-shadow:0 1px 8px rgba(0,0,0,.22);}
+  .card.custom .cat-chip{background:#fff;color:var(--roxo);}
+  footer{
+    background:#241a33;color:#c9bcd8;font-size:.85rem;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:22px 6vw;
+    border-radius:0 0 26px 26px;
+  }
+  footer .f-left,footer .f-center,footer .f-right{flex:1;}
+  footer .f-center{text-align:center;}
+  footer .f-right{text-align:right;font-size:.78rem;color:#9a8fae;}
+  footer .f-right b{color:#fff;font-weight:600;}
+  @media(max-width:640px){
+    footer{flex-direction:column;text-align:center;gap:8px;}
+    footer .f-left,footer .f-center,footer .f-right{text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="logo"><span class="dot">🎉</span> Festança da Jana</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="confetti" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <g id="spark"><path d="M0,-9 L2,-2 9,0 2,2 0,9 -2,2 -9,0 -2,-2 Z"/></g>
+        <g id="star"><path d="M0,-8 L2.4,-2.5 8,-2.5 3.4,1 5,7 0,3.4 -5,7 -3.4,1 -8,-2.5 -2.4,-2.5 Z"/></g>
+      </defs>
+      <!-- confetes redondos -->
+      <circle cx="70"  cy="60"  r="6"  fill="#ff5d8f"/>
+      <circle cx="180" cy="120" r="4"  fill="#3abff2"/>
+      <circle cx="320" cy="50"  r="5"  fill="#3ddc97"/>
+      <circle cx="520" cy="90"  r="4"  fill="#ffcf3f"/>
+      <circle cx="640" cy="55"  r="6"  fill="#7a4fff"/>
+      <circle cx="730" cy="150" r="4"  fill="#ff5d8f"/>
+      <circle cx="120" cy="300" r="5"  fill="#ffcf3f"/>
+      <circle cx="260" cy="350" r="4"  fill="#7a4fff"/>
+      <circle cx="430" cy="330" r="6"  fill="#3abff2"/>
+      <circle cx="600" cy="320" r="4"  fill="#3ddc97"/>
+      <circle cx="710" cy="360" r="5"  fill="#ff5d8f"/>
+      <circle cx="40"  cy="200" r="4"  fill="#3ddc97"/>
+      <!-- confetes retangulares girados -->
+      <rect x="230" y="180" width="12" height="6" rx="2" fill="#ff5d8f" transform="rotate(25 236 183)"/>
+      <rect x="470" y="200" width="12" height="6" rx="2" fill="#ffcf3f" transform="rotate(-30 476 203)"/>
+      <rect x="380" y="130" width="12" height="6" rx="2" fill="#7a4fff" transform="rotate(40 386 133)"/>
+      <rect x="580" y="230" width="12" height="6" rx="2" fill="#3abff2" transform="rotate(-15 586 233)"/>
+      <rect x="150" y="240" width="12" height="6" rx="2" fill="#3ddc97" transform="rotate(50 156 243)"/>
+      <!-- estrelinhas -->
+      <use href="#star" x="290" y="230" fill="#ffcf3f"/>
+      <use href="#star" x="500" y="300" fill="#ff5d8f"/>
+      <use href="#star" x="660" y="200" fill="#7a4fff"/>
+      <use href="#star" transform="translate(90 260)" fill="#3abff2"/>
+      <!-- brilhos brancos -->
+      <use href="#spark" transform="translate(210 70)" fill="#ffffff" opacity=".9"/>
+      <use href="#spark" transform="translate(410 60) scale(.7)" fill="#ffffff" opacity=".85"/>
+      <use href="#spark" transform="translate(560 150) scale(.8)" fill="#ffffff" opacity=".9"/>
+      <use href="#spark" transform="translate(120 160) scale(.6)" fill="#ffffff" opacity=".8"/>
+      <use href="#spark" transform="translate(680 300) scale(.7)" fill="#ffffff" opacity=".85"/>
+      <use href="#spark" transform="translate(340 290) scale(.6)" fill="#ffffff" opacity=".8"/>
+    </svg>
+    <div class="hero-inner">
+      <h1>Festas que viram lembrança</h1>
+      <p class="tag">Decoração de mesa e temas personalizados para deixar o seu dia inesquecível</p>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre">
+    <h2>Oi, eu sou a Janaína! 👋</h2>
+    <p>Transformo festas em momentos mágicos. Cuido de cada detalhe da decoração — do tema à mesa
+       principal — para que a sua comemoração fique linda, colorida e do jeitinho que você sonhou.
+       Aniversários infantis, chás e comemorações especiais são a minha paixão.</p>
+  </section>
+
+  <!-- DIVISÓRIA COLORIDA -->
+  <div class="divisoria">
+    <span class="linha esq"></span>
+    <span class="bolinhas"><i></i><i></i><i></i></span>
+    <span class="linha dir"></span>
+  </div>
+
+  <!-- CATÁLOGO -->
+  <section class="catalogo">
+    <div class="filtro">
+      <span class="filtro-label">Escolha sua categoria</span>
+      <button class="filtro-btn" id="filtroBtn">
+        <span id="filtroTexto">Todas as categorias</span>
+        <span class="chev">▼</span>
+      </button>
+      <div class="filtro-lista" id="filtroLista"></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="vazio" id="vazio" style="display:none;">Nenhuma decoração nesta categoria ainda 🎈</div>
+  </section>
+
+  <footer>
+    <div class="f-left">Festança da Jana · Decoração de Festas</div>
+    <div class="f-center">São Paulo/SP</div>
+    <div class="f-right">Desenvolvido por Camilla Pestana</div>
+  </footer>
+
+<script>
+  /* =========================================================
+     COMO ADICIONAR / EDITAR AS FESTAS DO CATÁLOGO
+     ---------------------------------------------------------
+     Cada item abaixo é uma festa. Basta:
+       1. Escrever o nome da festa em "titulo"
+       2. Definir a "categoria" (use um dos nomes da lista CATEGORIAS abaixo)
+       3. Colocar a foto na pasta "imagens" e escrever o nome do
+          arquivo em "imagem" (ex: "imagens/patrulha-canina.jpg")
+     Para adicionar mais festas, copie uma linha e cole abaixo.
+     ========================================================= */
+
+  const CATEGORIAS = [
+    { nome: "Aniversário Infantil", emo: "🎂" },
+    { nome: "Temático",             emo: "✨" },
+    { nome: "Chá Revelação",        emo: "🎈" },
+    { nome: "Chá de Bebê",          emo: "🍼" },
+  ];
+
+  const festas = [
+    { titulo: "Mesa Patrulha Canina", categoria: "Aniversário Infantil", imagem: "imagens/mesa-pcanina.png" },    { titulo: "Mesa Safari",          categoria: "Temático",             imagem: "imagens/mesa-safari.png" },
+    { titulo: "Chá Revelação Nuvem",  categoria: "Chá Revelação",        imagem: "imagens/mesa-revelação.png" },
+    { titulo: "Chá de Bebê Ursinho",  categoria: "Chá de Bebê",          imagem: "imagens/mesa-chabebe.png" },
+  ];
+
+  /* ---- ícone do WhatsApp ---- */
+  const ZAP_SVG = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.9 6.5L4 29l7.2-1.9c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.7c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.3 1.1 1.1-4.2-.2-.4a10 10 0 01-1.6-5.5C5 9.7 9.9 4.8 16 4.8s11 4.9 11 10.7-4.9 10.2-11 10.2zm5.7-7.6c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.3-.7.1a8.2 8.2 0 01-2.4-1.5 9 9 0 01-1.7-2.1c-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5s0-.4 0-.6-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>`;
+
+  const grid = document.getElementById("grid");
+  const vazio = document.getElementById("vazio");
+
+  function render(filtro){
+    grid.innerHTML = "";
+    const lista = filtro && filtro !== "Todas" ? festas.filter(f => f.categoria === filtro) : festas;
+    vazio.style.display = lista.length ? "none" : "block";
+    lista.forEach(f => {
+      const msg = encodeURIComponent(`Olá! Tenho interesse na decoração: ${f.titulo}. Poderia me passar mais informações?`);
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="frame">
+          <span class="cat-chip">${f.categoria}</span>
+          <div class="placeholder">
+            <div class="plus">＋</div>
+            <div>Coloque a foto aqui</div>
+            <small>${f.imagem}</small>
+          </div>
+          <img src="${f.imagem}" alt="${f.titulo}"
+               onload="this.previousElementSibling.style.display='none'"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="info">
+          <h3>${f.titulo}</h3>
+          <a class="zap-btn" href="https://wa.me/?text=${msg}" target="_blank" rel="noopener">
+            ${ZAP_SVG} Quero essa decoração
+          </a>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    // Tema personalizado — aparece em TODAS as categorias
+    const pmsg = encodeURIComponent("Olá! Tenho interesse em um TEMA PERSONALIZADO (que ainda não está no catálogo). Podemos montar juntas?");
+    const pcard = document.createElement("div");
+    pcard.className = "card custom";
+    pcard.innerHTML = `
+        <div class="frame">
+          <span class="cat-chip">Personalizado</span>
+          <div class="custom-inner">
+            <div class="ico">🎨</div>
+            <p>Monte o seu tema<br>do jeitinho que você quiser!</p>
+          </div>
+        </div>
+        <div class="info">
+          <h3>Tema Personalizado</h3>
+          <a class="zap-btn" href="https://wa.me/?text=${pmsg}" target="_blank" rel="noopener">
+            ${ZAP_SVG} Quero personalizar
+          </a>
+        </div>`;
+    grid.appendChild(pcard);
+
+    vazio.style.display = "none";
+  }
+
+  /* ---- monta o dropdown de categorias ---- */
+  const filtroBtn   = document.getElementById("filtroBtn");
+  const filtroLista = document.getElementById("filtroLista");
+  const filtroTexto = document.getElementById("filtroTexto");
+
+  const opcoes = [{ nome: "Todas", emo: "🎉", label: "Todas as categorias" },
+                  ...CATEGORIAS.map(c => ({ ...c, label: c.nome }))];
+
+  opcoes.forEach((o, i) => {
+    const b = document.createElement("button");
+    if(i === 0) b.classList.add("active");
+    b.innerHTML = `<span class="emo">${o.emo}</span> ${o.label}`;
+    b.onclick = () => {
+      filtroTexto.textContent = o.label;
+      filtroLista.querySelectorAll("button").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      closeDropdown();
+      render(o.nome);
+    };
+    filtroLista.appendChild(b);
+  });
+
+  function closeDropdown(){ filtroBtn.classList.remove("open"); filtroLista.classList.remove("open"); }
+  filtroBtn.onclick = (e) => {
+    e.stopPropagation();
+    filtroBtn.classList.toggle("open");
+    filtroLista.classList.toggle("open");
+  };
+  document.addEventListener("click", closeDropdown);
+
+  render("Todas");
+</script>
+</div>
+</body>
+</html>

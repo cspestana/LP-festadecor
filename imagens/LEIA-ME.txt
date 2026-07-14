@@ -1,0 +1,36 @@
+COMO INSERIR AS FOTOS DAS MESAS
+================================
+
+1) Coloque as fotos das festas DENTRO desta pasta "imagens".
+
+2) Use exatamente estes nomes de arquivo (o site ja procura por eles):
+   - patrulha-canina.jpg
+   - frozen.jpg
+   - homem-aranha.jpg
+   - safari.jpg
+   - cha-revelacao.jpg
+   - cha-de-bebe.jpg
+
+   Ex.: a foto da mesa da Patrulha Canina deve se chamar "patrulha-canina.jpg".
+
+3) Enquanto a foto nao estiver na pasta, o site mostra um quadradinho
+   com o nome do arquivo esperado - assim voce sabe qual foto colocar.
+
+QUER ADICIONAR OU TROCAR UMA FESTA?
+-----------------------------------
+Abra o arquivo "index.html" e procure a lista "const festas = [ ... ]".
+Cada linha e uma festa:
+
+  { titulo: "Mesa Patrulha Canina", categoria: "Aniversario Infantil", imagem: "imagens/patrulha-canina.jpg" },
+
+- "titulo"    = o nome que aparece embaixo da foto
+- "categoria" = uma das categorias da lista CATEGORIAS (logo acima no arquivo)
+- "imagem"    = o nome do arquivo dentro da pasta imagens
+
+Para adicionar uma nova, copie uma linha e cole abaixo, mudando os dados.
+Depois e so salvar a foto na pasta com o nome escolhido.
+
+CATEGORIAS disponiveis (mude/adicione na lista CATEGORIAS do index.html):
+   Aniversario Infantil, Tematico, Cha Revelacao, Cha de Bebe
+
+Dica: fotos na horizontal (paisagem) ficam melhores no catalogo.
